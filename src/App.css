@@ -1,65 +1,108 @@
-
 body{
-  background-color: rgb(129, 198, 255);
+  background-color: rgb(36, 33, 33);
+  overflow: hidden;
+}
+
+.game {
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tab {
-  height: 100vh;
-  width: 100vw;
+  height: 150px;
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.btn {
+  font-family: inherit;
+  height: 65px;
+  width: 170px;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.details {
+  height: 160px;
   display: flex;
-
-}
-.quiz{
-background-color: rgb(19, 19, 77);
-height: 350px;
-width: 600px;
-display: flex;
-justify-content: center;
-align-items: center;
-color:white;
-border-radius: 30px;
-}
-
-
-.questionTab{
-  height: 100%;
-  width:50%;
-  padding: 25px 10px 10px 25px;
   align-items: center;
-}
-
-.answer{
-  height: 100%;
-  width:50%;
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  font-size: 50px;
   flex-direction: column;
 }
 
-.allAnswers{
-  background-color: rgb(19, 19, 77);
-  color: white;
-  height: 5vh;
-  width: 27vw;
-  border-radius: 30px;
+.titleGame{
+  margin-bottom: 120px;
 }
 
-.nextBtn{
-  height: 50px;
-  width: 200px;
+.bar {
+  height: 15px;
+  width: 100vw;
+  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
 }
 
-.btn{
-  background-color:rgb(19, 19, 77);
-  color: white;
-  border-radius: 30px;
-  height: 4vh;
-  width: 10vw;
+.questionMark {
+  height: 130px;
+  width: 230px;
+  background-color: white;
+  color: rgb(24, 22, 22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+}
+
+.checkNumberTab {
+  height: 500px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.checkNumber{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.infoScore{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 25px;
+}
+
+input{
+  font-family: inherit;
+  height: 110px;
+  width: 250px;
+  text-align: center;
+  font-size: 80px;
+}
+
+.checkBtn{
+  padding-top: 20px;
+}
+
+.info_game{
+  width: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
