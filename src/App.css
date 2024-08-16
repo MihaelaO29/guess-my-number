@@ -106,3 +106,12 @@ input{
   align-items: center;
   justify-content: center;
 }
+
+.error {
+  color: red;
+  font-weight: bold;
+  font-size: 13px;
+  position: absolute;
+  top: 50%;
+  left: 6%;
+}

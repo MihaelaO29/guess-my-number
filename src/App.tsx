@@ -19,7 +19,7 @@ function App() {
     const value = +event.target.value;
     if (value >= 1 && value <= 20) {
       setGameNumber(value);
-
+      setError(null);
     } else {
       setError('Please enter a number between 1 and 20');
     }
@@ -31,10 +31,10 @@ function App() {
 
   const checkNumber = () => {
     if (gameNumber < 1 || gameNumber > 20) {
-      setError('Number must be between 1 and 20');
+      setError('Please enter a number between 1 and 20');
     } else {
       if (gameNumber === 0) {
-        setError('Please enter a number before checking');
+        setError('Please enter a number between 1 and 20');
       } else {
         if (gameNumber > randomNumber) {
           setStart('Too High');
@@ -60,7 +60,7 @@ function App() {
     setGameNumber(0);
     setStart('Guess My Number!');
     setWinner('Guess My Number!');
-    setError('');
+    setError(null);
   }
 
   const handleFocus = () => {
@@ -94,6 +94,8 @@ function App() {
             </div>
           </div>
           <div className='infoScore'>
+
+            {error && <div className='error'>{error}</div>}
             <p>
               {start}
             </p>
@@ -105,6 +107,5 @@ function App() {
     </>
   )
 }
-
 
 export default App;
