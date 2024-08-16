@@ -9,13 +9,20 @@ function App() {
   const [highscore, setHighscore] = useState(0);
   const [start, setStart] = useState('Start guessing');
   const [winner, setWinner] = useState('Guess My Number!');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setRandomNumber(generateNewRandomNumber());
   }, []);
 
   const handleNumber = (event: any) => {
-    setGameNumber(+event.target.value);
+    const value = +event.target.value;
+    if (value >= 1 && value <= 20) {
+      setGameNumber(value);
+
+    } else {
+      setError('Please enter a number between 1 and 20');
+    }
   }
 
   const generateNewRandomNumber = () => {
@@ -23,17 +30,26 @@ function App() {
   }
 
   const checkNumber = () => {
-    if (+gameNumber > +randomNumber) {
-      setStart('Too Heigh');
-      setScore(score - 1);
-    } else if (+gameNumber < +randomNumber) {
-      setStart('Too Low');
-      setScore(score - 1);
-    } else if (+gameNumber === +randomNumber) {
-      setHighscore(score);
-      setStart('Perfect');
-      setWinner('Winner');
-      document.body.style.backgroundColor = '#FF0000';
+    if (gameNumber < 1 || gameNumber > 20) {
+      setError('Number must be between 1 and 20');
+    } else {
+      if (gameNumber === 0) {
+        setError('Please enter a number before checking');
+      } else {
+        if (gameNumber > randomNumber) {
+          setStart('Too High');
+          setScore(score - 1);
+        } else if (gameNumber < randomNumber) {
+          setStart('Too Low');
+          setScore(score - 1);
+        } else {
+          setHighscore(score);
+          setStart('Perfect');
+          setWinner('Winner');
+          document.body.style.backgroundColor = '#FF0000';
+        }
+        setGameNumber(0)
+      }
     }
   }
 
@@ -41,6 +57,10 @@ function App() {
     setRandomNumber(generateNewRandomNumber());
     setScore(20);
     document.body.style.backgroundColor = 'rgb(36, 33, 33)';
+    setGameNumber(0);
+    setStart('Guess My Number!');
+    setWinner('Guess My Number!');
+    setError('');
   }
 
   const handleFocus = () => {
@@ -59,7 +79,7 @@ function App() {
           <div className='bar'>
             <div className='questionMark'>
               {gameNumber === randomNumber ? randomNumber : '?'}
-              </div>
+            </div>
           </div>
         </div>
         <div className='checkNumberTab'>
@@ -67,7 +87,7 @@ function App() {
             {/* @ts-ignore */}
             <div className='write_number'>
               <input type='number' value={gameNumber || ''} onClick={handleFocus}
-               onChange={handleNumber}></input>
+                onChange={handleNumber}></input>
             </div>
             <div className='checkBtn'>
               <button onClick={checkNumber} className='btn'>Check!</button>
